@@ -1,0 +1,346 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>5 Meses Contigo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: una sola columna tipo carta; hero con el 5 enorme, contador en vivo, linea del tiempo de 5 paradas, razones y carta final. */
+:root {
+  --bg: #fbf2f3;
+  --surface: #fffafa;
+  --fg: #3b1d2b;
+  --muted: #7d5a68;
+  --accent: #c2335a;
+  --accent-soft: #f6d3dc;
+  --line: #ecd3d9;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d0f17;
+    --surface: #2a1620;
+    --fg: #f8e8ec;
+    --muted: #c9a3b0;
+    --accent: #ff7a9c;
+    --accent-soft: #4a2231;
+    --line: #442534;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1d0f17;
+  --surface: #2a1620;
+  --fg: #f8e8ec;
+  --muted: #c9a3b0;
+  --accent: #ff7a9c;
+  --accent-soft: #4a2231;
+  --line: #442534;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  position: relative;
+  overflow-x: hidden;
+}
+#petals { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+main { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 72px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+/* Hero */
+.hero { display: flex; flex-direction: column; gap: 20px; padding-top: 16px; }
+.big { font-family: var(--font-display); font-size: clamp(120px, 38vw, 220px); line-height: 0.8; color: var(--accent); letter-spacing: -0.03em; }
+.hero h1 { font-size: clamp(38px, 10vw, 60px); line-height: 1.05; }
+.hero h1 em { color: var(--accent); }
+.lead { color: var(--muted); max-width: 46ch; }
+.counter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.counter div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 6px 10px; text-align: center; }
+.counter b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 34px; line-height: 1; font-variant-numeric: tabular-nums; }
+.counter span { font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.counter-note { font-size: 14px; color: var(--muted); }
+
+/* Timeline */
+.section-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+.section-head h2 { font-size: clamp(32px, 8vw, 44px); line-height: 1.1; }
+.timeline { list-style: none; margin: 0; padding: 0 0 0 28px; position: relative; display: flex; flex-direction: column; gap: 28px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.timeline li { position: relative; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.timeline li::before { content: ""; position: absolute; left: -28px; top: 7px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.timeline li:nth-last-child(2)::before { background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+.timeline li:last-child::before { border-style: dashed; }
+.timeline p:empty { display: none; }
+.timeline h3 { font-size: 26px; line-height: 1.2; }
+.timeline .when { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.timeline p { color: var(--muted); }
+.foto { margin: 10px 0 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.foto img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); }
+.foto .vacia { width: 100%; aspect-ratio: 4 / 5; border-radius: 16px; border: 2px dashed var(--line); background: var(--surface); color: var(--muted); display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-size: 15px; }
+.galeria { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; }
+.galeria .foto { margin: 0; }
+.foto figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.foto .lugar { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.foto .frase { font-family: var(--font-display); font-size: clamp(24px, 6.2vw, 30px); line-height: 1.22; color: var(--fg); text-wrap: balance; }
+.foto .frase em { color: var(--accent); font-style: italic; }
+
+/* Razones */
+.reason-card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 28px 22px 22px; display: flex; flex-direction: column; gap: 22px; }
+.reason-text { font-family: var(--font-display); font-size: clamp(26px, 6.6vw, 34px); line-height: 1.2; min-height: 4.8em; text-wrap: balance; }
+.reason-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.reason-count { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+button.cta { font: inherit; font-weight: 600; font-size: 16px; background: var(--accent); color: var(--bg); border: 0; border-radius: 999px; padding: 12px 22px; cursor: pointer; transition: transform 0.15s ease; }
+button.cta:hover { transform: translateY(-1px); }
+button.cta:active { transform: scale(0.97); }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Versos */
+.versos { display: flex; flex-direction: column; gap: 28px; }
+.versos p { font-family: var(--font-display); font-size: clamp(24px, 6.2vw, 30px); line-height: 1.25; padding-left: 18px; border-left: 2px solid var(--accent-soft); text-wrap: balance; }
+.versos em { color: var(--accent); font-style: italic; }
+
+/* Carta */
+.letter { display: flex; flex-direction: column; gap: 18px; padding: 8px 0 0; }
+.letter h2 { font-size: clamp(32px, 8vw, 44px); line-height: 1.1; }
+.letter p { max-width: 52ch; }
+.sign { font-family: var(--font-display); font-style: italic; font-size: 30px; color: var(--accent); margin-top: 4px; }
+.footer { text-align: center; color: var(--muted); font-size: 14px; }
+.footer .heart { color: var(--accent); font-size: 22px; display: inline-block; animation: beat 1.8s ease-in-out infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+@media (prefers-reduced-motion: reduce) { .footer .heart { animation: none; } }
+</style>
+
+<canvas id="petals" aria-hidden="true"></canvas>
+<main>
+  <section class="hero">
+    <p class="eyebrow" id="fecha-lbl">25 de mayo &middot; 25 de octubre de 2026</p>
+    <div class="big" aria-hidden="true">5</div>
+    <h1>Cinco meses contigo, <em id="nombre">mochi</em></h1>
+    <p class="lead">Hice esta página para ti, Azahara, para que tengas en un solo lugar lo mucho que me importas y todo lo que hemos vivido hasta hoy.</p>
+    <div class="counter" role="timer" aria-label="Tiempo juntos">
+      <div><b id="c-d">0</b><span>días</span></div>
+      <div><b id="c-h">0</b><span>horas</span></div>
+      <div><b id="c-m">0</b><span>min</span></div>
+      <div><b id="c-s">0</b><span>seg</span></div>
+    </div>
+    <p class="counter-note">Contando desde que empezamos.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Nuestro camino</p>
+      <h2>Cinco meses, cinco paradas</h2>
+    </div>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Fotos</p>
+      <h2>Momentos que no se olvidan</h2>
+    </div>
+    <div class="galeria" id="galeria"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Razones</p>
+      <h2>Por qué te quiero</h2>
+    </div>
+    <div class="reason-card">
+      <p class="reason-text" id="reason" aria-live="polite"></p>
+      <div class="reason-foot">
+        <span class="reason-count" id="reason-count"></span>
+        <button class="cta" id="next" type="button">Otra razón</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <p class="eyebrow">Palabras para ti</p>
+      <h2>Lo hermosa que eres</h2>
+    </div>
+    <div class="versos">
+      <p>Hay personas que iluminan un cuarto al entrar. <em>Tú iluminas hasta los días grises</em>, mochi.</p>
+      <p>Tu belleza no vive solo en tu cara. Está en cómo te ríes, en cómo miras y en <em>cómo haces sentir a quien tienes cerca</em>.</p>
+      <p>Si me preguntan qué es hermoso, no pienso en paisajes. Pienso en <em>ti, con el pelo al viento y esa sonrisa</em>.</p>
+      <p>Eres de esas cosas que uno no sabía que necesitaba hasta que llegan, y <em>ya no imagina la vida sin ellas</em>.</p>
+      <p>Contigo aprendí que querer no hace ruido. Se nota en la calma, en las manos juntas y en <em>no tener prisa por irse</em>.</p>
+    </div>
+  </section>
+
+  <section class="letter">
+    <p class="eyebrow">Para terminar</p>
+    <h2>Una carta corta</h2>
+    <p>Mochi, cinco meses parecen poco tiempo, pero contigo cada día cuenta como más. Me haces reír cuando no lo espero, me tranquilizas cuando todo pesa y me das ganas de seguir descubriendo qué viene después.</p>
+    <p>Gracias por tu paciencia, por tu forma de mirarme y por hacer que lo normal se sienta especial. Aún quedan muchos años por recorrer y experimentar, y quiero vivirlos todos a tu lado.</p>
+    <p>Felices 5 meses, te amo mi niña hermosa.</p>
+    <p class="sign">Con todo mi cariño</p>
+  </section>
+
+  <p class="footer"><span class="heart">&#10084;</span><br>Hecho con cariño para ti</p>
+</main>
+
+<script>
+/* Edita estos datos para personalizar la pagina. */
+var CONFIG = {
+  nombre: "mochi",
+  inicio: new Date(2026, 4, 25, 0, 0, 0), /* 25 de mayo de 2026 */
+  hitos: [
+    { cuando: "Mes 1", titulo: "Todo empezó", texto: "Los primeros días, los nervios y esa sensación de que algo bonito estaba empezando." },
+    { cuando: "Mes 2", titulo: "Nos fuimos conociendo", texto: "Las conversaciones largas, las bromas que solo entendemos nosotros y las primeras veces." },
+    { cuando: "Mes 3", titulo: "Empecé a enamorarme de ti y a acostumbrarme a quererte", texto: "Pensar en ti en cada momento, tenerte mucho más presente en mi vida y buscar cualquier cosa para poder tenerte a mi lado, aunque me costara la vida ganarme el dinero solo por estar a tu lado." },
+    { cuando: "Mes 4", titulo: "Nos hicimos equipo", texto: "A pesar de los obstáculos, los días malos y los días buenos, siempre nos tuvimos el uno al otro y empezamos a planear nuestro futuro juntos." },
+    { cuando: "Mes 5", titulo: "Celebramos nuestros 5 meses", texto: "Me siento el hombre más feliz por estar celebrando nuestros 5 meses y estar decidido a querer toda una vida a tu lado, construéndola contigo ahora mismo. Te amo, Azahara." },
+    { cuando: "Lo que viene", titulo: "Continuará...", texto: "" }
+  ],
+  momentos: [
+    { titulo: "De compras", foto: "fotos/m1.jpg", frase: "Tú posando y yo de fondo, y aun así la mejor foto siempre es *tu sonrisa*." },
+    { titulo: "Bésame en este rincón", foto: "fotos/m2.jpg", frase: "El cartel lo dijo primero, pero contigo *cualquier rincón* se vuelve mi lugar favorito." },
+    { titulo: "Una noche cualquiera", foto: "fotos/m3.jpg", frase: "Abrazados y con *tu carita de mochi* haciendo que me ría sin querer." },
+    { titulo: "Espejo dorado", foto: "fotos/m4.jpg", frase: "Si el tiempo se para un segundo, que sea contigo y *tu beso en mi mejilla*." },
+    { titulo: "Sin prisa", foto: "fotos/m5.jpg", frase: "Tumbados al sol, sin planes. *Tú* eres mi calma favorita." }
+  ],
+  razones: [
+    "Por tu sonrisa, que me cambia el día entero.",
+    "Porque contigo puedo ser yo sin esforzarme.",
+    "Por cómo te ríes cuando algo te hace de verdad gracia.",
+    "Porque me escuchas incluso cuando no sé explicarme.",
+    "Por los planes pequeños que contigo se vuelven los mejores.",
+    "Porque me haces querer ser mejor persona.",
+    "Por tu forma de cuidar los detalles.",
+    "Porque a tu lado el tiempo pasa volando.",
+    "Por todo lo que todavía nos queda por vivir."
+  ]
+};
+
+function $(id) { return document.getElementById(id); }
+$("nombre").textContent = CONFIG.nombre;
+
+/* Linea del tiempo */
+var tl = $("timeline");
+CONFIG.hitos.forEach(function (h) {
+  var li = document.createElement("li");
+  li.innerHTML = '<span class="when"></span><h3></h3><p></p>';
+  li.children[0].textContent = h.cuando;
+  li.children[1].textContent = h.titulo;
+  li.children[2].textContent = h.texto;
+  tl.appendChild(li);
+});
+
+/* Momentos especiales */
+var gal = $("galeria");
+CONFIG.momentos.forEach(function (m) {
+  var fig = document.createElement("figure");
+  fig.className = "foto";
+  if (m.foto) {
+    var im = document.createElement("img");
+    im.src = m.foto;
+    im.alt = m.titulo;
+    im.loading = "lazy";
+    fig.appendChild(im);
+  } else {
+    var v = document.createElement("div");
+    v.className = "vacia";
+    v.textContent = "Aquí irá la foto de este momento";
+    fig.appendChild(v);
+  }
+  var cap = document.createElement("figcaption");
+  var lg = document.createElement("span");
+  lg.className = "lugar";
+  lg.textContent = m.titulo;
+  cap.appendChild(lg);
+  var fr = document.createElement("p");
+  fr.className = "frase";
+  m.frase.split("*").forEach(function (parte, n) {
+    if (n % 2) {
+      var e = document.createElement("em");
+      e.textContent = parte;
+      fr.appendChild(e);
+    } else {
+      fr.appendChild(document.createTextNode(parte));
+    }
+  });
+  cap.appendChild(fr);
+  fig.appendChild(cap);
+  gal.appendChild(fig);
+});
+
+/* Contador en vivo */
+function tick() {
+  var diff = Math.max(0, Date.now() - CONFIG.inicio.getTime());
+  var s = Math.floor(diff / 1000);
+  $("c-d").textContent = Math.floor(s / 86400);
+  $("c-h").textContent = Math.floor((s % 86400) / 3600);
+  $("c-m").textContent = Math.floor((s % 3600) / 60);
+  $("c-s").textContent = s % 60;
+}
+tick();
+setInterval(tick, 1000);
+
+/* Razones */
+var idx = 0;
+function showReason() {
+  $("reason").textContent = CONFIG.razones[idx];
+  $("reason-count").textContent = "Razón " + (idx + 1) + " de " + CONFIG.razones.length;
+}
+showReason();
+$("next").addEventListener("click", function () {
+  idx = (idx + 1) % CONFIG.razones.length;
+  showReason();
+});
+
+/* Petalos ambientales */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return;
+  var cv = $("petals"), ctx = cv.getContext("2d"), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size() {
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size();
+  window.addEventListener("resize", size);
+  var petals = [];
+  for (var i = 0; i < 16; i++) {
+    petals.push({ x: Math.random() * W, y: Math.random() * H, r: 5 + Math.random() * 7, v: 0.25 + Math.random() * 0.45, sw: Math.random() * 6, rot: Math.random() * 6 });
+  }
+  function color() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#c2335a";
+  }
+  var col = color();
+  setInterval(function () { col = color(); }, 3000);
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = col;
+    ctx.globalAlpha = 0.16;
+    petals.forEach(function (p) {
+      p.y += p.v; p.sw += 0.012; p.rot += 0.008;
+      var x = p.x + Math.sin(p.sw) * 22;
+      if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+      ctx.save();
+      ctx.translate(x, p.y);
+      ctx.rotate(p.rot);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.r, p.r * 0.55, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+</body></html>
